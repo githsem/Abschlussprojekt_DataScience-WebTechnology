@@ -6,8 +6,10 @@
 Beziehen von Rezensionen von den Seiten Klinikbewertungen.de & Google Maps
 
 
+
 ### Prozess 2: Data Science/ Machine Learning
 Bezogene & bereinigte Daten mittels einer Machine Learning Methode verarbeiten
+
 
 
 ### Prozess 3: Web Technology
