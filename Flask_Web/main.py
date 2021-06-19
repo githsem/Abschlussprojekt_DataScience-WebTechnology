@@ -4,11 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    
-    article = dict()
-    article['title']='TEST'
-    article['body']='TEST222'
-    return render_template("index.html",article=article)
+    return render_template("layout.html")
 
 @app.route("/about")
 def about():
