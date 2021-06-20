@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST">
+    <h3>Ihr Text</h3>
+    <textarea name="text" id="" cols="60" rows="10"></textarea><br>
+    <input type="submit">
+</form>
+<br><br><br><br>
+<h3 style="color: blue;">Sterne: {{result}}</h3>
+      
+{% endblock %}
