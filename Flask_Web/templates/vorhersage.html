@@ -2,11 +2,13 @@
 
 {% block body %}
 <form method="POST">
-    <h3>Ihr Text</h3>
-    <textarea name="text" id="" cols="60" rows="10"></textarea><br>
-    <input type="submit">
+<div class="form-floating">
+  <textarea name="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2">Text</label><br>
+  <input type="submit">
+</div>
 </form>
-<br><br><br><br>
-<h3 style="color: blue;">Sterne: {{result}}</h3>
+<br><br><br>
+<h3 style="color: rgb(192, 192, 238);">Sterne: {{result}}</h3> 
       
 {% endblock %}
