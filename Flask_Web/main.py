@@ -21,6 +21,10 @@ def my_form_post():
 def uberuns():
     return render_template("uberuns.html")   
    
+@app.route("/googlemaps")
+def googlemaps():
+    liste = [1,2,3,4,5]
+    return render_template("googlemaps.html",liste=liste)      
   
 
 if __name__ == "__main__":
