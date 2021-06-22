@@ -11,11 +11,13 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 def vorhersage(text):
     text = [text]
 
-    df=pd.read_csv("Flask_Web/GM_Clean.csv")
-
-
-    Independent_var = df.Bewertung
-    Dependent_var = df.Sternebewertung
+    df=pd.read_csv("Flask_Web/kbClean.csv")
+    Independent_var = df.Erfahrungsbericht
+    Dependent_var = df.Zufriedenheit
+    
+    # df=pd.read_csv("Flask_Web/GM_Clean.csv")
+    # Independent_var = df.Bewertung
+    # Dependent_var = df.Sternebewertung
 
     IV_train, IV_test, DV_train, DV_test = train_test_split(Independent_var, Dependent_var, test_size = 0.15, random_state = 225)
 
