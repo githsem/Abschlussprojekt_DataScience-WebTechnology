@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request
+import pandas as pd
 import TeamITea
 
 app = Flask(__name__)
+
+df=pd.read_csv("Flask_Web/GM_Clean.csv")
+
 
 @app.route("/")
 def index():
@@ -23,7 +27,7 @@ def uberuns():
    
 @app.route("/googlemaps")
 def googlemaps():
-    liste = [1,2,3,4,5]
+    liste = df['Bewertung']
     return render_template("googlemaps.html",liste=liste)      
   
 
