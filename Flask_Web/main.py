@@ -19,7 +19,7 @@ def my_form():
 def my_form_post():
     text = request.form['text']
     result = TeamITea.vorhersage(text) 
-    return render_template('vorhersage.html',result=result[0])
+    return render_template('vorhersage.html',result=result[0],text1=text)
 
 @app.route("/uberuns")
 def uberuns():
