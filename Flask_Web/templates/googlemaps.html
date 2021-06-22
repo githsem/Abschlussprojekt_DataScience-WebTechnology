@@ -1,6 +1,26 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h2>Google Maps</h2>
+<h2>Google Maps</h2><br>
+<input id="button" type="button" value="Show" onclick="show()"><br><br>
+<ol id="aa" style="display: none;">
+    {% for i in range(20)  %}
+        <li>{{liste[i]}}</li>
+        <hr>
+    {% endfor %}
+</ol>
+<script>
+    function show(){
+        x = document.getElementById('aa')
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            document.getElementById('button').value = 'Hide';
+        } else {
+            x.style.display = "none";
+            document.getElementById('button').value = 'Show';
+  }
+    }
+</script>
+
 
 {% endblock %}
