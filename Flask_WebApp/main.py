@@ -4,7 +4,6 @@ import TeamITea
 
 app = Flask(__name__)
 
-df=pd.read_csv("Flask_Web/GM_Clean.csv")
 
 
 @app.route("/")
