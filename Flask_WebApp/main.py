@@ -4,6 +4,8 @@ import TeamITea
 
 app = Flask(__name__)
 
+df=pd.read_csv("kbClean.csv")
+
 
 
 @app.route("/")
@@ -22,7 +24,8 @@ def my_form_post():
 
 @app.route("/bewertungen")
 def bewerungen():
-    return render_template("bewertungen.html")   
+    dizi = df.groupby(['NameKlinik']).mean().get('Gesamt')
+    return render_template("bewertungen.html",dizi=dizi)   
    
 @app.route("/googlemaps")
 def googlemaps():
