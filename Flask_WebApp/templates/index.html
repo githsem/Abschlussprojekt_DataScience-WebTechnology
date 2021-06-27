@@ -1,333 +1,531 @@
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ITea - Klinik Finder</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <link href= "{{ url_for('static',filename='styles/main.min.css') }}" rel="stylesheet">
-  <style>
-    section {
-      padding: 60px 0;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-md navbar-light pt-5 pb-4">
-    <div class="container-xxl">
-      <!-- navbar brand / title -->
-      <a class="navbar-brand" href="#intro">
-        <span class="text-secondary fw-bold">
-          <i class="bi bi-book-half"></i>
-          ITea - Klinik Finder
-        </span>
-      </a>
-      <!-- toggle button for mobile nav -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
-        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- navbar links -->
-      <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-        <ul class="navbar-nav">
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/bewertungen">Bewertungen</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/vorhersage">Vorhersage</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Kontakt</a>
-          </li>
-          
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- main image & intro text -->
-  <section id="intro">
-    <div class="container-lg">
-      <div class="row g-4 justify-content-center align-items-center">
-        <div class="col-md-5 text-center text-md-start">
-          <h1>
-            <div class="display-2">ITea</div>
-            <div class="display-5 text-muted">Klinik-Finder</div>
-          </h1>
-          <p class="lead my-4 text-muted">Finde das Krankaenhaus mit den besten Bewertungen für dein Anliegen</p>
-          <a href="bewertungen.html" class="btn btn-secondary btn-lg">Zur Bewertungen</a>
-
-          <!-- open sidebar / offcanvas -->
-          <a href="#sidebar" class="d-block mt-3" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">
-            Sidebar
-          </a>
-        </div>
-        <div class="col-md-5 text-center d-none d-md-block">
-
-          <!-- tooltip -->
-          <span class="tt" data-bs-placement="bottom" title="Krankenhäuser Vergleich">
-            <img src="{{url_for('static', filename='images/kliniks2.png')}}" class="img-fluid" alt="ebook">
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- chart -->
-  <section id="reviews" class="bg-altlight">
-    <div class="container-lg">
-      <div class="text-center">
-        <h2><i class="bi bi-stars text-altdark"></i>Bewertungen von Krankanhäuser</h2>
-        <p class="lead">Was Besucher über Krankenhäuser berichten...</p>
-      </div>
-
-
-      <div class="justify-content-center my-5">
-        <div class="justify-content-center my-5">
-
-        </div>
-      </div>
-
-      <div class="row justify-content-center my-5">
-        <div class="col-lg-8">
-          <div class="list-group">
-            <div class="list-group-item py-3">
-              <div class="pb-2">
-                <canvas id="myChart"></canvas>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row justify-content-center my-5">
-        <div class="col-lg-8">
-          <div class="list-group">
-            <div class="list-group-item py-3">
-              <div class="pb-2">
-                <i class="bi bi-star-fill text-altdark"></i>
-                <i class="bi bi-star-fill text-altdark"></i>
-                <i class="bi bi-star-fill text-altdark"></i>
-                <i class="bi bi-star-fill text-altdark"></i>
-                <i class="bi bi-star-fill text-altdark"></i>
-              </div>
-              <h5 class="mb-1">Weiter zu Empfehlen.</h5>
-              <p class="mb-1">Die Klinik ist sehr gut eingerichtet und ausgestattet! Sehr sauber und man wird sich nicht verlaufen, einfach die Hinweise folgen! Hygiene Maßnahmen gut respektiert! Das Zimmer sieht nett aus, mit Gut ausgestattetem Pflegebett!</p>
-              <small>Mario berichtet als Patient</small>
-            </div>
-            <div class="list-group-item py-3">
-              <div class="pb-2">
-                <i class="bi bi-star-fill text-altdark"></i>
-                <i class="bi bi-star-fill text-altdark"></i>
-                <i class="bi bi-star-fill text-altdark"></i>
-                <i class="bi bi-star-fill text-altdark"></i>
-                <i class="bi bi-star-fill text-altdark"></i>
-              </div>
-              <h5 class="mb-1">Superkompetent und freundlich</h5>
-              <p class="mb-1">Alles gut organisiert, super erklärt. Abläufe funktionieren Hand in Hand. Personal freundlich
-                .</p>
-              <small>Mario berichtet als Patient</small>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- contact form -->
-  <!-- form-control, form-label, form-select, input-group, input-group-text -->
-  <section id="contact">
-    <div class="container-lg">
-
-      <div class="text-center">
-        <h2>Kontaktieren Sie Uns</h2>
-        <p class="lead">Möchten Sie Fragen stellen? Füllen Sie das Formular aus,<br> um uns direkt zu kontaktieren.</p>
-      </div>
-      <div class="row justify-content-center my-5">
-        <div class="col-lg-6">
-
-          <form>
-            <label for="email" class="form-label">E-Mail:</label>
-            <div class="input-group mb-4">
-              <span class="input-group-text">
-                <i class="bi bi-envelope-fill text-secondary"></i>
-              </span>
-              <input type="text" id="email" class="form-control" placeholder="e.g. mario@beispiel.de" />
-              <!-- tooltip -->
-              <span class="input-group-text">
-                <span class="tt" data-bs-placement="bottom" title="Geben Sie eine E-Mail Adresse ein, an die wir antworten können.">
-                  <i class="bi bi-question-circle text-muted"></i>
-                </span>
-              </span>
-            </div>
-            <label for="name" class="form-label">Name:</label>
-            <div class="mb-4 input-group">
-              <span class="input-group-text">
-                <i class="bi bi-person-fill text-secondary"></i>
-              </span>
-              <input type="text" id="name" class="form-control" placeholder="z.B. Mario" />
-              <!-- tooltip -->
-              <span class="input-group-text">
-                <span class="tt" data-bs-placement="bottom" title="Ziemlich selbsterklärend eigentlich...">
-                  <i class="bi bi-question-circle text-muted"></i>
-                </span>
-              </span>
-            </div>
-            <label for="subject" class="form-label">Worum geht es bei Ihrer Frage?</label>
-            <div class="mb-4 input-group">
-              <span class="input-group-text">
-                <i class="bi bi-chat-right-dots-fill text-secondary"></i>
-              </span>
-              <select class="form-select" id="subject">
-                <option value="pricing" selected>Auswahl 1</option>
-                <option value="content">Auswahl 2</option>
-                <option value="other">Auswahl 3</option>
-              </select>
-            </div>
-            <div class="mb-4 mt-5 form-floating">
-              <textarea class="form-control" id="query" style="height: 140px" placeholder="query"></textarea>
-              <label for="query">Ihre Anfrage...</label>
-            </div>
-            <div class="mb-4 text-center">
-              <button type="submit" class="btn btn-secondary">Absenden</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- get updates / modal trigger -->
-  <section class="bg-light">
-    <div class="container">
-      <div class="text-center">
-        <h2>Aboniere unseren Newsletter</h2>
-        <p class="lead">Erhalten Sie die neuesten Updates, sobald sie passieren...</p>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-          <p class="text-muted my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero exercitationem
-            voluptatibus porro, hic asperiores fuga illo voluptates obcaecati deleniti veritatis sunt saepe quasi
-            deserunt ex ipsum. Est possimus, aspernatur, vitae eligendi rem odit quaerat, ipsum pariatur ratione maxime
-            delectus fuga minus accusamus dolores iusto maiores accusantium cumque magnam placeat quia!</p>
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">
-            Für Updates Registrieren
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- modal itself -->
-  <div class="modal fade" id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal-title">Die neuesten Updates erhalten</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, exercitationem laboriosam nihil minus
-            voluptatibus harum aliquam consequatur pariatur inventore dignissimos illum excepturi ratione ipsum sit
-            iusto alias eligendi fugit laborum?</p>
-          <label for="modal-email" class="form-label">Ihre E-Mail Adresse:</label>
-          <input type="text" class="form-control" id="modal-email" placeholder="z.B. mario@beispiel.de">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- side panel / offcanvas -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebar-label">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="sidebar-label">Sidebar</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. In minima ducimus excepturi quasi tempore fugit quis
-        voluptatibus aut error possimus, tenetur natus magni quam voluptatem quae eligendi repudiandae delectus eaque!
-      </p>
-      <!-- dropdown -->
-      <div class="dropdown mt-3">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="book-dropdown" data-bs-toggle="dropdown">
-          Auswahl
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="book-dropdown">
-          <li><a class="dropdown-item" href="#">Auswahl 1</a></li>
-          <li><a class="dropdown-item" href="#">Auswahl 2</a></li>
-          <li><a class="dropdown-item" href="#">Auswahl 3</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const tooltips = document.querySelectorAll('.tt')
-    tooltips.forEach(t => {
-      new bootstrap.Tooltip(t)
-    })
-  </script>
-
-
-
-  <script>
-    var ctx = document.getElementById('myChart');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ITea - Klinik Finder</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="{{ url_for('static',filename='styles/main.min.css') }}"
+      rel="stylesheet"
+    />
+    <style>
+      section {
+        padding: 60px 0;
       }
-    });
-  </script>
-</body>
+    </style>
+  </head>
 
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md navbar-light pt-5 pb-4 bg-light">
+      <div class="container-xxl">
+        <!-- navbar brand / title -->
+        <a class="navbar-brand" href="/">
+          <span class="text-secondary fw-bold">
+            <i class="fa fa-stethoscope"></i>
+            ITea - Klinik Finder
+          </span>
+        </a>
+        <!-- toggle button for mobile nav -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main-nav"
+          aria-controls="main-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- navbar links -->
+        <div
+          class="collapse navbar-collapse justify-content-end align-center"
+          id="main-nav"
+        >
+          <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+          <!-- navbar class "fw-bold" eklemeli mi? -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/bewertungen">Bewertungen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/vorhersage">Vorhersage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Kontakt</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- main image & intro text -->
+    <section id="intro">
+      <div class="container-lg">
+        <div class="row g-4 justify-content-center align-items-center">
+          <div class="col-md-5 text-center text-md-start">
+            <h1>
+              <div class="display-2">ITea</div>
+              <div class="display-5 text-muted">Klinik-Finder</div>
+            </h1>
+            <p class="lead my-4 text-muted">
+              Finde das Krankenhaus mit den besten Bewertungen für dein Anliegen
+            </p>
+            <a href="bewertungen.html" class="btn btn-secondary btn-lg"
+              >Zur Bewertungen</a
+            >
+
+            <!-- open sidebar / offcanvas -->
+            <a
+              href="#sidebar"
+              class="d-block mt-3"
+              data-bs-toggle="offcanvas"
+              role="button"
+              aria-controls="sidebar"
+            >
+              Sidebar
+            </a>
+          </div>
+          <!-- <div class="col-md-5 text-center d-none d-md-block"> -->
+            <div class="col-6">
+            <!-- Intro Chart -->
+            <span
+              class="tt"
+              data-bs-placement="bottom"
+              title="Vergleich der Krankenhauszufriedenheit"
+            >
+              <!-- <img src="{{url_for('static', filename='images/kliniks2.png')}}" class="img-fluid" alt="Vergleich"> -->
+              <canvas id="myChart" width="300px" height="300px"></canvas>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chart & Hospital Choice -->
+    <section id="reviews" class="bg-light mt-5">
+      <div class="container-lg">
+        <div class="text-center">
+          <h2>
+            <i class="bi bi-stars text-altdark"></i>Bewertungen von
+            Krankanhäuser
+          </h2>
+          <p class="lead">Was Besucher über Krankenhäuser berichten...</p>
+        </div>
+        <div class="row my-5 g-5 justify-content-around align-items-center">
+          <div class="col-6 col-lg-4">
+            <canvas id="pieChart"></canvas>
+          </div>
+          <div class="col-lg-6">
+            <div class="list-group">
+              <div class="list-group-item py-3">
+                <div class="pb-2">
+                  <i class="bi bi-star-fill text-altdark"></i>
+                  <i class="bi bi-star-fill text-altdark"></i>
+                  <i class="bi bi-star-fill text-altdark"></i>
+                  <i class="bi bi-star-fill text-altdark"></i>
+                  <i class="bi bi-star-fill text-altdark"></i>
+                </div>
+                <h5 class="mb-1" style="font-style: italic">
+                  "Weiter zu Empfehlen."
+                </h5>
+                <p class="mb-1" style="font-style: italic">
+                  "Die Klinik ist sehr gut eingerichtet und ausgestattet! Sehr
+                  sauber und man wird sich nicht verlaufen, einfach die Hinweise
+                  folgen! Hygiene Maßnahmen gut respektiert! Das Zimmer sieht
+                  nett aus, mit Gut ausgestattetem Pflegebett!"
+                </p>
+                <small>Mario berichtet als Patient</small>
+              </div>
+              <div class="list-group-item py-3">
+                <div class="pb-2">
+                  <i class="bi bi-star-fill text-altdark"></i>
+                  <i class="bi bi-star-fill text-altdark"></i>
+                  <i class="bi bi-star-fill text-altdark"></i>
+                  <i class="bi bi-star-fill text-altdark"></i>
+                  <i class="bi bi-star-fill text-altdark"></i>
+                </div>
+                <h5 class="mb-1 fst-italic">
+                  "Superkompetent und freundlich"
+                </h5>
+                <p class="mb-1 fst-italic">
+                  "Alles gut organisiert, super erklärt. Abläufe funktionieren
+                  Hand in Hand. Personal freundlich."
+                </p>
+                <small>Max berichtet als Patient</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 text-center">
+            <button class="btn btn-primary">Zum Vergleich</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact form -->
+    <!-- form-control, form-label, form-select, input-group, input-group-text -->
+    <section id="contact">
+      <div class="container-lg">
+        <div class="text-center">
+          <h2>Kontaktieren Sie Uns</h2>
+          <p class="lead">
+            Möchten Sie Fragen stellen? Füllen Sie das Formular aus,<br />
+            um uns direkt zu kontaktieren.
+          </p>
+        </div>
+        <div class="row justify-content-center my-5">
+          <div class="col-lg-6">
+            <form>
+              <label for="email" class="form-label">E-Mail:</label>
+              <div class="input-group mb-4">
+                <span class="input-group-text">
+                  <i class="bi bi-envelope-fill text-secondary"></i>
+                </span>
+                <input
+                  type="text"
+                  id="email"
+                  class="form-control"
+                  placeholder="e.g. mario@beispiel.de"
+                />
+                <!-- tooltip -->
+                <span class="input-group-text">
+                  <span
+                    class="tt"
+                    data-bs-placement="bottom"
+                    title="Geben Sie eine E-Mail Adresse ein, an die wir antworten können."
+                  >
+                    <i class="bi bi-question-circle text-muted"></i>
+                  </span>
+                </span>
+              </div>
+              <label for="name" class="form-label">Name:</label>
+              <div class="mb-4 input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-person-fill text-secondary"></i>
+                </span>
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  placeholder="z.B. Mario"
+                />
+                <!-- tooltip -->
+                <span class="input-group-text">
+                  <span
+                    class="tt"
+                    data-bs-placement="bottom"
+                    title="Ziemlich selbsterklärend eigentlich..."
+                  >
+                    <i class="bi bi-question-circle text-muted"></i>
+                  </span>
+                </span>
+              </div>
+              <label for="subject" class="form-label"
+                >Worum geht es bei Ihrer Frage?</label
+              >
+              <div class="mb-4 input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-chat-right-dots-fill text-secondary"></i>
+                </span>
+                <select class="form-select" id="subject">
+                  <option value="pricing" selected>Auswahl 1</option>
+                  <option value="content">Auswahl 2</option>
+                  <option value="other">Auswahl 3</option>
+                </select>
+              </div>
+              <div class="mb-4 mt-5 form-floating">
+                <textarea
+                  class="form-control"
+                  id="query"
+                  style="height: 140px"
+                  placeholder="query"
+                ></textarea>
+                <label for="query">Ihre Anfrage...</label>
+              </div>
+              <div class="mb-4 text-center">
+                <button type="submit" class="btn btn-secondary">
+                  Absenden
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- get updates / modal trigger -->
+    <section class="bg-light">
+      <div class="container">
+        <div class="text-center">
+          <h2>Aboniere unseren Newsletter</h2>
+          <p class="lead">
+            Erhalten Sie die neuesten Updates, sobald sie passieren...
+          </p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <p class="text-muted my-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+              exercitationem voluptatibus porro, hic asperiores fuga illo
+              voluptates obcaecati deleniti veritatis sunt saepe quasi deserunt
+              ex ipsum. Est possimus, aspernatur, vitae eligendi rem odit
+              quaerat, ipsum pariatur ratione maxime delectus fuga minus
+              accusamus dolores iusto maiores accusantium cumque magnam placeat
+              quia!
+            </p>
+            <button
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#reg-modal"
+            >
+              Für Updates Registrieren
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- modal itself -->
+    <div
+      class="modal fade"
+      id="reg-modal"
+      tabindex="-1"
+      aria-labelledby="modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-title">
+              Die neuesten Updates erhalten
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis,
+              exercitationem laboriosam nihil minus voluptatibus harum aliquam
+              consequatur pariatur inventore dignissimos illum excepturi ratione
+              ipsum sit iusto alias eligendi fugit laborum?
+            </p>
+            <label for="modal-email" class="form-label"
+              >Ihre E-Mail Adresse:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="modal-email"
+              placeholder="z.B. mario@beispiel.de"
+            />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- side panel / offcanvas -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="sidebar"
+      aria-labelledby="sidebar-label"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebar-label">Sidebar</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. In minima
+          ducimus excepturi quasi tempore fugit quis voluptatibus aut error
+          possimus, tenetur natus magni quam voluptatem quae eligendi
+          repudiandae delectus eaque!
+        </p>
+        <!-- dropdown -->
+        <div class="dropdown mt-3">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="book-dropdown"
+            data-bs-toggle="dropdown"
+          >
+            Auswahl
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="book-dropdown">
+            <li><a class="dropdown-item" href="#">Auswahl 1</a></li>
+            <li><a class="dropdown-item" href="#">Auswahl 2</a></li>
+            <li><a class="dropdown-item" href="#">Auswahl 3</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const tooltips = document.querySelectorAll(".tt");
+      tooltips.forEach((t) => {
+        new bootstrap.Tooltip(t);
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        //pie
+        let ctxP = document.getElementById("pieChart").getContext("2d");
+        let myPieChart = new Chart(ctxP, {
+          type: "doughnut",
+          data: {
+            labels: ["Sehr Zufrieden", "Zufrieden", "Weniger Zufrieden", "Unzufrieden"],
+            datasets: [
+              {
+                data: [250, 50, 100, 40],
+                backgroundColor: [
+                  "#F7464A",
+                  "#46BFBD",
+                  "#FDB45C",
+                  "#949FB1",
+                  "#4D5360",
+                ],
+                hoverBackgroundColor: [
+                  "#FF5A5E",
+                  "#5AD3D1",
+                  "#FFC870",
+                  "#A8B3C5",
+                  "#616774",
+                ],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+          },
+        });
+
+        // Horizontal
+
+        let ctx2 = document.getElementById('myChart').getContext('2d');
+        // xlabels = ;
+
+        // Chart.defaults.global.defaultFontFamily = 'Lato';
+        let myChart = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+              labels: ['Klinik Am Zuckerberg',
+                      'Eilenriede Klinik Hannover',
+                      'HEH Herzogin Elisabeth Hospital',
+                      'Klinik Fallingbostel',
+                      'Kreiskrankenhaus Osterholz',
+                      'Krankenhaus St. Martini',
+                      'AMEOS Klinikum Seepark Geestland',
+                      'Diana Klinik-Fachklinik für Physikalische Medizin',
+                      'Elbe Kliniken Stade - Buxtehude, Standort Buxtehude',
+                      'MediClin Klinikum Soltau',
+                      'Klinikum Peine gGmbH',
+                      'Sophienklinik GmbH',
+                      'DIAKOVERE Henriettenstift',
+                      'Kreiskrankenhaus Winsen',
+                      'Klinikum Wolfsburg',
+                      'HELIOS Klinik Cuxhaven',
+                      'Agaplesion - Diakonieklinikum Rotenburg',
+                      'Helios Kliniken Mittelweser - Krankenhaus Nienburg',
+                      'Heidekreis-Klinikum GmbH - Krankenhaus Walsrode',
+                      'KRH Klinikum Agness Karll Laatzen',
+                      'Kreiskrankenhaus Buchholz',
+                      'Klinikum Wahrendorff',
+                      'AMEOS Klinikum Hildesheim',
+                      'Psychiatrische Klinik Lüneburg'],
+              datasets: [{
+                  label: 'Gesamtzufriedenheit',
+                  data: [4.654545454545455,
+                        4.375510204081633,
+                        4.180769230769231,
+                        4.118536585365854,
+                        4.002272727272726,
+                        3.966666666666667,
+                        3.836111111111111,
+                        3.7371165644171804,
+                        3.717073170731706,
+                        3.526344086021506,
+                        3.4937931034482754,
+                        3.4578947368421056,
+                        3.4066390041493784,
+                        3.3860465116279075,
+                        3.323706896551724,
+                        3.2615999999999996,
+                        3.2222222222222228,
+                        3.183064516129032,
+                        2.974038461538461,
+                        2.945762711864406,
+                        2.8430894308943087,
+                        2.8295238095238093,
+                        2.3818713450292393,
+                        2.231372549019608],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 2,
+                  hoverBorderWidth: 3,
+                  hoverBorderColor: '#000',
+                  borderColor: '#777'
+              }]
+          },
+          options: {
+            // title:{
+            //   display:true,
+            //   text:'Deneme'
+            // },
+            legend:{
+              position:'right'
+
+            },
+            indexAxis:'y',
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+    </script>
+  </body>
 </html>
