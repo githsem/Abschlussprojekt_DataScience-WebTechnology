@@ -5,12 +5,17 @@ import TeamITea
 app = Flask(__name__)
 
 df=pd.read_csv("kbClean.csv")
+kb_stars = df[['NameKlinik', 'Gesamt', 'Zufriedenheit']]
+kb_means = kb_stars.groupby(['NameKlinik'], as_index=False)['Gesamt'].mean()
+kb_means = kb_means.sort_values('Gesamt',ascending=False, ignore_index=True)
+vergleich_list = kb_means['Gesamt'].to_list()
+
 
 
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html",serie=vergleich_list)
 
 @app.route('/vorhersage')
 def my_form():
