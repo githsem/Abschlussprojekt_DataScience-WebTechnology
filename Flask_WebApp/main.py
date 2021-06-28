@@ -39,7 +39,7 @@ def bewertungen_post():
     kname = request.form['options']
 
     # KB Bewertungen
-    df2 = df.where(df["NameKlinik"]==text)
+    df2 = df.where(df["NameKlinik"]==kname)
     df2.dropna(inplace=True)
     kb_bewertungen = df2['Erfahrungsbericht']
 
