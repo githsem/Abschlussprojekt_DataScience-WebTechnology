@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ITea - Klinik Finder</title>
+    <script src="https://kit.fontawesome.com/dfdd262768.js" crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -26,7 +27,7 @@
         <!-- navbar brand / title -->
         <a class="navbar-brand" href="/">
           <span class="text-secondary fw-bold">
-            <i class="bi bi-book-half"></i>
+            <i class="fas fa-hospital-user"></i>
             ITea - Klinik Finder
           </span>
         </a>
@@ -436,32 +437,59 @@
         let myChart = new Chart(ctx2, {
           type: 'bar',
           data: {
-              labels: ['Klinik Am Zuckerberg',
-                      'Eilenriede Klinik Hannover',
-                      'HEH Herzogin Elisabeth Hospital',
-                      'Klinik Fallingbostel',
-                      'Kreiskrankenhaus Osterholz',
-                      'Krankenhaus St. Martini',
-                      'AMEOS Klinikum Seepark Geestland',
-                      'Diana Klinik-Fachklinik für Physikalische Medizin',
-                      'Elbe Kliniken Stade - Buxtehude, Standort Buxtehude',
-                      'MediClin Klinikum Soltau',
-                      'Klinikum Peine gGmbH',
-                      'Sophienklinik GmbH',
-                      'DIAKOVERE Henriettenstift',
-                      'Kreiskrankenhaus Winsen',
-                      'Klinikum Wolfsburg',
-                      'HELIOS Klinik Cuxhaven',
-                      'Agaplesion - Diakonieklinikum Rotenburg',
-                      'Helios Kliniken Mittelweser - Krankenhaus Nienburg',
-                      'Heidekreis-Klinikum GmbH - Krankenhaus Walsrode',
-                      'KRH Klinikum Agness Karll Laatzen',
-                      'Kreiskrankenhaus Buchholz',
-                      'Klinikum Wahrendorff',
-                      'AMEOS Klinikum Hildesheim',
-                      'Psychiatrische Klinik Lüneburg'],
+              labels: [
+                'Herzogin Elisabeth Hospital',
+                'Klinik am Zuckerberg',
+                'Klinikum Wolfsburg',
+                'Klinikum Peine',
+                'St. Martini Krankenhaus',
+                'DIAKOVERE Henriettenstift',
+                'Eilenriede Klinik Hannover',
+                'Sophienklinik',
+                'KRH Klinikum Agness Karll Laatzen',
+                'Klinikum Wahrendorff',
+                'AMEOS Klinikum Hildesheim',
+                'Helios Kliniken Mittelweser',
+                'HELIOS Klinik Cuxhaven',
+                'AMEOS Klinikum Seepark Geestland',
+                'Krankenhaus Buchholz',
+                'Krankenhaus Winsen',
+                'Psychiatrische Klinik Lüneburg',
+                'Agaplesion - Diakonieklinikum Rotenburg',
+                'Kreiskrankenhaus Osterholz',
+                'Klinik Fallingbostel',
+                'MediClin Klinikum Soltau',
+                'Krankenhaus Walsrode',
+                'Elbe Klinikum Buxtehude',
+                'Diana Kliniken'
+                
+                // 'Klinik Am Zuckerberg',
+                // 'Eilenriede Klinik Hannover',
+                // 'HEH Herzogin Elisabeth Hospital',
+                // 'Klinik Fallingbostel',
+                // 'Kreiskrankenhaus Osterholz',
+                // 'Krankenhaus St. Martini',
+                // 'AMEOS Klinikum Seepark Geestland',
+                // 'Diana Klinik-Fachklinik für Physikalische Medizin',
+                // 'Elbe Kliniken Stade - Buxtehude, Standort Buxtehude',
+                // 'MediClin Klinikum Soltau',
+                // 'Klinikum Peine gGmbH',
+                // 'Sophienklinik GmbH',
+                // 'DIAKOVERE Henriettenstift',
+                // 'Kreiskrankenhaus Winsen',
+                // 'Klinikum Wolfsburg',
+                // 'HELIOS Klinik Cuxhaven',
+                // 'Agaplesion - Diakonieklinikum Rotenburg',
+                // 'Helios Kliniken Mittelweser - Krankenhaus Nienburg',
+                // 'Heidekreis-Klinikum GmbH - Krankenhaus Walsrode',
+                // 'KRH Klinikum Agness Karll Laatzen',
+                // 'Kreiskrankenhaus Buchholz',
+                // 'Klinikum Wahrendorff',
+                // 'AMEOS Klinikum Hildesheim',
+                // 'Psychiatrische Klinik Lüneburg'
+                ],
               datasets: [{
-                  label: 'Gesamtzufriedenheit',
+                  label: 'klinikbewertungen.de',
                   data: [4.654545454545455,
                         4.375510204081633,
                         4.180769230769231,
@@ -487,10 +515,11 @@
                         2.3818713450292393,
                         2.231372549019608],
                   backgroundColor: [
+                  'rgba(75, 192, 192, 0.2)',
+
                       'rgba(255, 99, 132, 0.2)',
                       'rgba(54, 162, 235, 0.2)',
                       'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
                       'rgba(153, 102, 255, 0.2)',
                       'rgba(255, 159, 64, 0.2)',
                       'rgba(54, 162, 235, 0.2)',
@@ -513,6 +542,20 @@
               }]
           },
           options: {
+            plugins: {
+              title: {
+              display: true,
+              text: 'Vergleich der Krankenhauszufriedenheit'
+            }
+            // scales: {
+            //   y: [{
+            //     title: {
+            //       display: true,
+            //       text: 'Your Title'
+            //     }
+            //   }]
+            // }
+          },
             // title:{
             //   display:true,
             //   text:'Deneme'
@@ -526,9 +569,10 @@
             },
             indexAxis:'y',
               scales: {
-                  y: {
-                      beginAtZero: true
-                  }
+                y: {
+                  beginAtZero: true,
+                  text: 'demene'
+                }
               }
           }
       });
