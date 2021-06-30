@@ -27,7 +27,15 @@ def my_form():
 def my_form_post():
     text = request.form['text']
     result = TeamITea.vorhersage(text) 
-    return render_template('vorhersage.html',result=result[0],text1=text)
+    if text =='':
+        result = ['']
+    if result[0]=='pos':
+        thumb ='up'
+    elif  result[0]=='neg': 
+        thumb ='down' 
+    else:
+        thumb =''
+    return render_template('vorhersage.html',result=result[0],text1=text,thumb=thumb)
 
 @app.route("/bewertungen")
 def bewertungen():
