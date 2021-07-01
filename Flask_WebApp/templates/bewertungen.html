@@ -5,14 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ITea - Klinik Finder</title>
-  <script src="https://kit.fontawesome.com/dfdd262768.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <link href="{{ url_for('static',filename='styles/main.min.css') }}" rel="stylesheet">
   <style>
     section {
       padding: 60px 0;
     }
   </style>
+  <script src="https://kit.fontawesome.com/dfdd262768.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  
   <!-- Datatable Script-->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -21,32 +21,31 @@
   <script>
     $(document).ready(function () {
       $('#table_id').DataTable();
+      $('#table_id2').DataTable();
     });
   </script>
   <!-- Datatable end of Script -->
+  <link href="{{ url_for('static',filename='styles/main.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
   <!-- navbar -->
   <nav class="navbar navbar-expand-md navbar-light pt-5 pb-4 bg-light">
     <div class="container-xxl">
-      <!-- navbar brand / title -->
+       <!-- navbar brand / title -->
       <a class="navbar-brand" href="/">
         <span class="text-secondary fw-bold">
-          <i class="fas fa-hospital-user"></i>
-          ITea - Klinik Finder
-        </span>
+          <i class="fas fa-hospital-user"></i>ITea - Klinik Finder</span>
       </a>
       <!-- toggle button for mobile nav -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
-        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <!-- navbar links -->
       <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
         <ul class="navbar-nav">
-
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
           </li>
@@ -56,35 +55,31 @@
           <li class="nav-item">
             <a class="nav-link" href="/vorhersage">Vorhersage</a>
           </li>
-          
-
         </ul>
       </div>
     </div>
   </nav>
   <!-- Select Hospital -->
   <div class="container-xxl pt-3 justify-content-center col-lg-5">
-    
-  <form action="/bewertungen" method="POST">
-  <div class="mb-4 input-group justify-content-center">
-    <select class="form-select" id="subject" name="options">
-      <option value="Auswählen" selected>Auswählen</option>
-      {% for i in nameKlinik %}
-      <option value="{{i}}">{{i}}</option>
-      {% endfor %}
-    </select>
-    <button class="btn btn-primary" type="submit">Go <i class="fas fa-ambulance"></i></button>
-    </div>
-    <div class="mb-4 input-group justify-content-center">
-    </div>
-</form>
-</div>
+    <h2 class="text-center pt-3">Wähl dir eine Klinik</h2>
+    <form action="/bewertungen" method="POST">
+      <div class="mb-4 input-group justify-content-center py-3">
+        <select class="form-select" id="subject" name="options">
+          <!-- <option value="Auswählen" selected>Auswählen</option> -->
+            {% for i in nameKlinik %}
+          <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-primary" type="submit">Go <i class="fas fa-ambulance"></i></button>
+      </div>
+    </form>
+  </div>
   <!-- Select Hospital end -->
 
   <!-- Second Nav -->
 
-  <div class="container-fluid-xxl">
-    <nav>
+  <div class="container-fluid-xxl" >
+    <nav style="display: {{display}};">
       <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
 
         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Klinikbewertungen.de</button>
@@ -96,7 +91,9 @@
 
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         
-        <!-- Chart & Hospital Choice -->
+  <!-- Klinikbewerungen Inhalt -->
+  
+    <!-- Chart & Hospital Choice -->
   <section id="reviews" class="bg-light" style="display: {{display2}};">
     <div class="container-lg">
       <div class="text-center">
@@ -105,7 +102,7 @@
       </div>
       <div class="row my-5 g-5 justify-content-around align-items-center">
         <div class="col-6 col-lg-4">
-          <canvas id="doughnut"></canvas>
+          <canvas id="dummyDoughnut"></canvas>
         </div>
         <div class="col-lg-6">
           <div class="list-group">
@@ -155,10 +152,9 @@
 <!-- Hospital Information -->
 <section id="all_info" class="bg-light" style="display: {{display}};">
   <div class="container-lg">
-    <div class="text-center">
-      <h2>Krankenhäuser</h2>
-      <p class="lead text-muted">wähle eine Klinik, um alle Informationen zu sehen.</p>
-    </div>
+    <!-- <div class="text-center"> -->
+      <p class="lead"><h3> Informationen über die Klinik</h3></p>
+    <!-- </div> -->
     <div class="row my-5 g-5 justify-content-around align-items-center">
       <div class="col-lg-4">
           <div class="card border-primary border-2">
@@ -170,8 +166,8 @@
             <div class="card-body text-center">
               <div class="row g-0">
                 <div class="">
-                  <img src="/static/images/{{kname}}.jpg" alt="">
-                  <!-- <img src="/static/images/HEH Herzogin Elisabeth Hospital.jpg" alt=""> -->
+                  <!-- <img src="/static/images/{{kname}}.jpg" alt="" class=""> -->
+                  <img src="/static/images/HEH Herzogin Elisabeth Hospital.jpg" alt="">
                 </div>
                 
               </div>
@@ -207,16 +203,15 @@
 
 
 <!-- reviews list -->
-<section id="reviews" class="bg-light" style="display: {{display}};">
+<section id="reviews" style="display: {{display}};">
   <div class="container-lg">
     <div class="text-center">
       <h2><i class="bi bi-stars text-altdark"></i>Klinik Bewertungen</h2>
       <p class="lead">Was Besucher über die Klinik gesagt haben...</p>
     </div>
-
     <div class="container-lg justify-content-center my-5">
-            <!-- Datatable Begin-->
-             
+
+            <!-- KB Datatable Begin-->
         <table id="table_id" class="display table">
           <thead>
             <tr>
@@ -229,8 +224,8 @@
             
             <tr>
               {% for i,j,k in kb %}
-              <td style="width: 75%;">{{i}}</td>
-              <td style="width: 20%;">
+              <td style="width: 80%;">{{i}}</td>
+              <td style="width: 12%;">
                 <div class="list-group-item py-3">
                   <div class="pb-2">
                     {% for k in range(j) %}
@@ -238,12 +233,12 @@
                     {% endfor %}
                   </div>
               </td>
-              <td style="width: 5%;">{{k}}</td>
+              <td style="width: 8%;">{{k}}</td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
-      <!-- Datatable End -->
+      <!-- KB Datatable End -->
       
     </div>
   </div>
@@ -251,10 +246,161 @@
 
       </div>
 
-      <div class="tab-pane fade p-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <h2>Profile</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi, cupiditate nam aperiam possimus, ratione modi enim inventore reiciendis ipsum mollitia, adipisci accusamus! Dolorem omnis illo incidunt ex, sit minus numquam.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi, cupiditate nam aperiam possimus, ratione modi enim inventore reiciendis ipsum mollitia, adipisci accusamus! Dolorem omnis illo incidunt ex, sit minus numquam.</p>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+          <!-- Google Maps Inhalt -->
+  
+    <!-- Chart & Hospital Choice -->
+  <section id="reviews" class="bg-light" style="display: {{display2}};">
+    <div class="container-lg">
+      <div class="text-center">
+        <h2><i class="bi bi-stars text-altdark"></i>Bewertungen von Krankanhäuser</h2>
+        <p class="lead">Was Besucher über Krankenhäuser berichten...</p>
+      </div>
+      <div class="row my-5 g-5 justify-content-around align-items-center">
+        <div class="col-6 col-lg-4">
+          <canvas id="gmdoughnut"></canvas>
+        </div>
+        <div class="col-lg-6">
+          <div class="list-group">
+            <div class="list-group-item py-3">
+              <div class="pb-2">
+                <i class="bi bi-star-fill text-altdark"></i>
+                <i class="bi bi-star-fill text-altdark"></i>
+                <i class="bi bi-star-fill text-altdark"></i>
+                <i class="bi bi-star-fill text-altdark"></i>
+                <i class="bi bi-star-fill text-altdark"></i>
+              </div>
+              <h5 class="mb-1" style="font-style: italic">
+                "Weiter zu Empfehlen."
+              </h5>
+              <p class="mb-1" style="font-style: italic">
+                "Die Klinik ist sehr gut eingerichtet und ausgestattet! Sehr
+                sauber und man wird sich nicht verlaufen, einfach die Hinweise
+                folgen! Hygiene Maßnahmen gut respektiert! Das Zimmer sieht
+                nett aus, mit Gut ausgestattetem Pflegebett!"
+              </p>
+              <small>Mario berichtet als Patient</small>
+            </div>
+            <div class="list-group-item py-3">
+              <div class="pb-2">
+                <i class="bi bi-star-fill text-altdark"></i>
+                <i class="bi bi-star-fill text-altdark"></i>
+                <i class="bi bi-star-fill text-altdark"></i>
+                <i class="bi bi-star-fill text-altdark"></i>
+                <i class="bi bi-star-fill text-altdark"></i>
+              </div>
+              <h5 class="mb-1 fst-italic">
+                "Superkompetent und freundlich"
+              </h5>
+              <p class="mb-1 fst-italic">
+                "Alles gut organisiert, super erklärt. Abläufe funktionieren
+                Hand in Hand. Personal freundlich."
+              </p>
+              <small>Max berichtet als Patient</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Hospital Information -->
+<section id="all_info" class="bg-light" style="display: {{display}};">
+  <div class="container-lg">
+    <!-- <div class="text-center"> -->
+      <p class="lead"><h3> Informationen über die Klinik</h3></p>
+    <!-- </div> -->
+    <div class="row my-5 g-5 justify-content-around align-items-center">
+      <div class="col-lg-4">
+          <div class="card border-primary border-2">
+            
+            <div class="card-header text-center text-primary">
+              <h4 class="card-title">{{kname}}</h4>
+            </div>
+            
+            <div class="card-body text-center">
+              <div class="row g-0">
+                <div class="">
+                  <!-- <img src="/static/images/{{kname}}.jpg" alt="" class=""> -->
+                  <img src="/static/images/HEH Herzogin Elisabeth Hospital.jpg" alt="">
+                </div>
+                
+              </div>
+              <canvas id="gmDoughnut"></canvas> 
+              <p class="card-text mx-5 text-muted d-none d-lg-block">
+                Lorem ipsum dolor sit amet 
+              </p>
+              <!-- <a href="#" class="btn btn-outline-primary btn-lg mt-3">Buy Now</a> -->
+            </div>
+          </div>
+      </div>
+      <div class="col-lg-6">
+       
+          <div class="container-lg">
+            <div class="row g-4 justify-content-center align-items-center">
+              
+                
+      
+                <!-- Graph -->
+                <span class="tt" data-bs-placement="bottom" title="Krankenhäuser Vergleich">
+                  <img src="{{url_for('static', filename='images/kliniks2.png')}}" class="img-fluid" alt="Vergleich">
+                </span>
+            
+            </div>
+          </div>
+      
+    </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+<!-- reviews list -->
+<section id="reviews" style="display: {{display}};">
+  <div class="container-lg">
+    <div class="text-center">
+      <h2><i class="bi bi-stars text-altdark"></i>Klinik Bewertungen</h2>
+      <p class="lead">Was Besucher über die Klinik gesagt haben...</p>
+    </div>
+
+    <div class="container-lg justify-content-center my-5">
+            <!-- GM Datatable Begin-->
+             
+        <table id="table_id2" class="display table">
+          <thead>
+            <tr>
+              <th>Bewertungen</th>
+              <th>Sterne</th>
+              <th>Analyse</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              {% for i,j,k in gm %}
+              <td style="width: 80%;">{{i}}</td>
+              <td style="width: 12%;">
+                <div class="list-group-item py-3">
+                  <div class="pb-2">
+                    {% for k in range(j) %}
+                    <i class="bi bi-star-fill text-altdark"></i>
+                    {% endfor %}
+                  </div>
+              </td>
+              <td style="width: 8%;">{{k}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      <!-- GM Datatable End -->
+      
+    </div>
+  </div>
+</section>
       </div>
       
     </div>
@@ -270,21 +416,21 @@
   </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  //Dummy Doughnut
-  var ctxP = document.getElementById("doughnut").getContext("2d");
-  var myPieChart = new Chart(ctxP, {
+  // Dummy Doughnut
+  var dDoughnut = document.getElementById("dummyDoughnut").getContext("2d");
+  var myDoughnut = new Chart(dDoughnut, {
     type: "doughnut",
     data: {
-      labels: ["Sehr Zufrieden", "Zufrieden", "Weniger Zufrieden", "Unzufrieden"],
+      labels: ["Unzufrieden", "Weniger Zufrieden",  "Zufrieden", "Sehr Zufrieden"],
       datasets: [
         {
-          data: [300, 50, 100, 40],
+          data: [1,2,3,4],
           backgroundColor: [
-            "#198754",
             "#ffc107",
             "#fd7e14",
             "#dc3545",
-            // "#4D5360",
+            "#198754",
+            "#4D5360"
           ],
           hoverBackgroundColor: [
             "#FF5A5E",
@@ -303,22 +449,80 @@
     },
   }
   });
+      
 
+//   let labels1 = ['YES', 'YES BUT IN GREEN'];
+// let data1 = [69, 31];
+// let colors1 = ['#49A9EA', '#36CAAB'];
+
+// let myDoughnutChart = document.getElementById("myChart").getContext('2d');
+
+// let chart1 = new Chart(myDoughnutChart, {
+//     type: 'doughnut',
+//     data: {
+//         labels: ['YES', 'YES BUT IN GREEN'],
+//         datasets: [ {
+//             data: [69, 31],
+//             backgroundColor: ['#49A9EA', '#36CAAB']
+//         }]
+//     },
+//     options: {
+//         title: {
+//             text: "Do you like doughnuts?",
+//             display: true
+//         }
+//     }
+// });
+</script>
+<script>
   // Klinik Doughnut
-  var ctxD = document.getElementById("klinikDoughnut").getContext("2d");
-  var myPieChart = new Chart(ctxD, {
+  var kbDoughnut = document.getElementById("klinikDoughnut").getContext("2d");
+  var myPieChart = new Chart(kbDoughnut, {
     type: "doughnut",
     data: {
-      labels: ["Sehr Zufrieden", "Zufrieden", "Weniger Zufrieden", "Unzufrieden"],
+      labels: ["Unzufrieden", "Weniger Zufrieden",  "Zufrieden", "Sehr Zufrieden"],
       datasets: [
         {
-          data: [300, 50, 100, 40],
+          data: {{data}},
           backgroundColor: [
-            "#198754",
             "#ffc107",
             "#fd7e14",
             "#dc3545",
-            // "#4D5360",
+            "#198754",
+            "#4D5360"
+          ],
+          hoverBackgroundColor: [
+            "#FF5A5E",
+            "#5AD3D1",
+            "#FFC870",
+            "#A8B3C5",
+            "#616774",
+          ],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      animation: {
+            duration: 2800,
+    },
+  }
+  });
+  // GM Doughnut
+  var gmDoughnut = document.getElementById("gmDoughnut").getContext("2d");
+  var myPieChart2 = new Chart(gmDoughnut, {
+    type: "doughnut",
+    data: {
+      labels: ["Unzufrieden", "Weniger Zufrieden", "Neutral" , "Zufrieden", "Sehr Zufrieden"],
+      datasets: [
+        {
+          data: [1,2,3,4],
+          backgroundColor: [
+            "#ffc107",
+            "#fd7e14",
+            "#dc3545",
+            "#198754",
+            "#4D5360"
           ],
           hoverBackgroundColor: [
             "#FF5A5E",
