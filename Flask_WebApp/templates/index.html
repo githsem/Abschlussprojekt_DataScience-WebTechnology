@@ -49,9 +49,10 @@
           class="collapse navbar-collapse justify-content-end align-center"
           id="main-nav"
         >
-          <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-          <!-- navbar class "fw-bold" eklemeli mi? -->
-          <ul class="navbar-nav">
+          <ul class="navbar-nav fw-bold">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/bewertungen">Bewertungen</a>
             </li>
@@ -78,9 +79,9 @@
             <p class="lead my-4 text-muted">
               Finde das Krankenhaus mit den besten Bewertungen für dein Anliegen
             </p>
-            <a href="bewertungen.html" class="btn btn-secondary btn-lg"
-              >Zur Bewertungen</a
-            >
+            <a href="/bewertungen">
+              <button class="btn btn-secondary btn-lg">Finde eine Klinik</button>
+          </a>
 
             <!-- open sidebar / offcanvas -->
             <a
@@ -90,7 +91,9 @@
               role="button"
               aria-controls="sidebar"
             >
-              Sidebar
+              <a href="#sidebar" class="d-block mt-3" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">
+                Das Team
+              </a>
             </a>
           </div>
           <!-- <div class="col-md-5 text-center d-none d-md-block"> -->
@@ -164,7 +167,9 @@
             </div>
           </div>
           <div class="col-md-8 text-center">
-            <button class="btn btn-primary">Zum Vergleich</button>
+            <a href="/bewertungen">
+              <button class="btn btn-primary">Zur Bewertungen</button>
+          </a>
           </div>
         </div>
       </div>
@@ -236,7 +241,8 @@
                   <i class="bi bi-chat-right-dots-fill text-secondary"></i>
                 </span>
                 <select class="form-select" id="subject">
-                  <option value="pricing" selected>Auswahl 1</option>
+                  <option value="pricing" selected>Auswählen</option>
+                  <option value="content">Auswahl 1</option>
                   <option value="content">Auswahl 2</option>
                   <option value="other">Auswahl 3</option>
                 </select>
@@ -345,8 +351,8 @@
       id="sidebar"
       aria-labelledby="sidebar-label"
     >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="sidebar-label">Sidebar</h5>
+      <div class="offcanvas-header bg-light">
+        <h5 class="offcanvas-title" id="sidebar-label">Unser Team</h5>
         <button
           type="button"
           class="btn-close"
@@ -354,28 +360,72 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="offcanvas-body">
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. In minima
-          ducimus excepturi quasi tempore fugit quis voluptatibus aut error
-          possimus, tenetur natus magni quam voluptatem quae eligendi
-          repudiandae delectus eaque!
-        </p>
-        <!-- dropdown -->
-        <div class="dropdown mt-3">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="book-dropdown"
-            data-bs-toggle="dropdown"
-          >
-            Auswahl
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="book-dropdown">
-            <li><a class="dropdown-item" href="#">Auswahl 1</a></li>
-            <li><a class="dropdown-item" href="#">Auswahl 2</a></li>
-            <li><a class="dropdown-item" href="#">Auswahl 3</a></li>
-          </ul>
+      <div class="offcanvas-body ">
+        <div class="row my-5 align-items-center justify-content-center">
+
+          <!-- <div class="card border-0">
+            <div class="card-body text-center py-4">
+              <h4 class="card-title">Starter Edition</h4>
+              <p class="lead card-subtitle">eBook download only</p>
+              <p class="display-5 my-4 text-primary fw-bold">$12.99</p>
+              <p class="card-text mx-5 text-muted d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, vitae magni! Repellat commodi a fuga corporis saepe dolorum.</p>
+              <a href="#" class="btn btn-outline-primary btn-lg mt-3">
+                Buy Now
+              </a>
+            </div>
+          </div> 
+
+          <div class="card border-0">
+            <div class="card-body text-center py-4">
+              <h4 class="card-title">Ultimate Edition</h4>
+              <p class="lead card-subtitle">download, updates & extras</p>
+              <p class="display-5 my-4 text-primary fw-bold">$24.99</p>
+              <p class="card-text mx-5 text-muted d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, vitae magni! Repellat commodi a fuga corporis saepe dolorum.</p>
+              <a href="#" class="btn btn-outline-primary btn-lg mt-3">
+                Buy Now
+              </a>
+            </div>
+          </div> -->
+
+          <div class="card border-primary border-2">
+            <div class="card-header text-center text-primary">Most Popular</div>
+            <div class="card-body text-center py-5">
+              <h4 class="card-title">Complete Edition</h4>
+              <p class="lead card-subtitle">eBook download & all updates</p>
+              <p class="display-4 my-4 text-primary fw-bold">$18.99</p>
+              <p class="card-text mx-5 text-muted d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, vitae magni! Repellat commodi a fuga corporis saepe dolorum.</p>
+              <!-- <a href="#" class="btn btn-outline-primary btn-lg mt-3">
+                Buy Now
+              </a> -->
+            </div>
+          </div>
+
+          <div class="card border-primary border-2">
+            <div class="card-header text-center text-primary">Most Popular</div>
+            <div class="card-body text-center py-5">
+              <h4 class="card-title">Complete Edition</h4>
+              <p class="lead card-subtitle">eBook download & all updates</p>
+              <p class="display-4 my-4 text-primary fw-bold">$18.99</p>
+              <p class="card-text mx-5 text-muted d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, vitae magni! Repellat commodi a fuga corporis saepe dolorum.</p>
+              <!-- <a href="#" class="btn btn-outline-primary btn-lg mt-3">
+                Buy Now
+              </a> -->
+            </div>
+          </div>
+
+          <div class="card border-primary border-2">
+            <div class="card-header text-center text-primary">Most Popular</div>
+            <div class="card-body text-center py-5">
+              <h4 class="card-title">Complete Edition</h4>
+              <p class="lead card-subtitle">eBook download & all updates</p>
+              <p class="display-4 my-4 text-primary fw-bold">$18.99</p>
+              <p class="card-text mx-5 text-muted d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, vitae magni! Repellat commodi a fuga corporis saepe dolorum.</p>
+              <!-- <a href="#" class="btn btn-outline-primary btn-lg mt-3">
+                Buy Now
+              </a> -->
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -395,6 +445,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         //pie
+        window.addEventListener("scroll", function() {
+    scrollAmount = window.scrollY;
+    if(window.scrollY >= 550){
+    show()
+    }
+});
+        function show(){
         let ctxP = document.getElementById("pieChart").getContext("2d");
         let myPieChart = new Chart(ctxP, {
           type: "doughnut",
@@ -427,7 +484,7 @@
     },
           },
         });
-
+        }
         // Horizontal
 
         let ctx2 = document.getElementById('myChart').getContext('2d');
