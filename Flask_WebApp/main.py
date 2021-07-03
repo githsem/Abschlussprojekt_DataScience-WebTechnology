@@ -28,6 +28,31 @@ df3 = dfgm.groupby(['Name der Klinik', 'Sternebewertung']).size().unstack().rese
 df3 = df3.fillna(0)
 gmsterneDict = df3.set_index('Name der Klinik').T.to_dict('list')
 
+adressen = {
+'Herzogin Elisabeth Hospital' : 'Leipziger Str. 24, 38124 Braunschweig',
+'Klinik am Zuckerberg' : 'Zuckerbergweg 2, 38124 Braunschweig',
+'Klinikum Wolfsburg' : 'Sauerbruchstraße 7, 38440 Wolfsburg',
+'Klinikum Peine' : 'Virchowstraße 8 h, 31226 Peine',
+'St. Martini Krankenhaus' : 'Göttinger Str. 34, 37115 Duderstadt',
+'DIAKOVERE Henriettenstift' : 'Marienstraße 72-90, 30171 Hannover',
+'Eilenriede Klinik Hannover' : 'Uhlemeyerstraße 16, 30175 Hannover',
+'Sophienklinik' : 'Bischofsholer Damm 160, 30173 Hannover',
+'KRH Klinikum Agness Karll Laatzen' : 'Hildesheimer Str. 158, 30880 Laatzen',
+'Klinikum Wahrendorff' : 'Rudolf-Wahrendorff-Straße 23, 31319 Sehnde',
+'AMEOS Klinikum Hildesheim' : 'Goslarsche Landstraße 60, 31135 Hildesheim',
+'Helios Kliniken Mittelweser' : 'Ziegelkampstraße 39, 31582 Nienburg/Weser',
+'HELIOS Klinik Cuxhaven' : 'Altenwalder Chaussee 10, 27474 Cuxhaven',
+'AMEOS Klinikum Seepark Geestland' : 'Langener Str. 66, 27607 Geestland',
+'Krankenhaus Buchholz' : 'Steinbecker Str. 44, 21244 Buchholz in der Nordheide',
+'Krankenhaus Winsen' : 'Friedrich-Lichtenauer-Allee 1, 21423 Winsen (Luhe)',
+'Psychiatrische Klinik Lüneburg' : 'Am Wienebütteler Weg 1, 21339 Lüneburg',
+'Agaplesion - Diakonieklinikum Rotenburg' : 'Elise-Averdieck-Straße 17, 27356 Rotenburg (Wümme)',
+'Kreiskrankenhaus Osterholz' : 'Am Krankenhaus 4, 27711 Osterholz-Scharmbeck',
+'Klinik Fallingbostel' : 'Kolkweg 1, 29683 Bad Fallingbostel',
+'MediClin Klinikum Soltau' : 'Oeninger Weg 59, 29614 Soltau',
+'Krankenhaus Walsrode' : 'Robert-Koch-Straße 4, 29664 Walsrode',
+'Elbe Klinikum Buxtehude' : 'Am Krankenhaus 1, 21614 Buxtehude',
+'Diana Kliniken' : 'Dahlenburger Str. 2A, 29549 Bad Bevensen'}
 
 @app.route("/")
 def index():
@@ -43,14 +68,13 @@ def my_form_post():
     result = TeamITea.vorhersage(text)
     if text =='':
         result = ['Bitte ein Text eingeben!']
-    if result[0]=='pos':
+    if result[0]=='Positiv':
         thumb ='up text-success'
-    elif  result[0]=='neg': 
+    elif  result[0]=='Negativ': 
         thumb ='down text-danger' 
     else:
         thumb =''
     return render_template('vorhersage.html',result=result[0],text1=text,thumb=thumb)
-    return render_template('vorhersage.html',result=result[0],text1=text)
 
 @app.route("/bewertungen")
 def bewertungen():
@@ -61,6 +85,7 @@ def bewertungen():
 @app.route("/bewertungen", methods=['POST'])
 def bewertungen_post():
     kname = request.form['options']
+    adresse = adressen[kname]
 
     # KB Bewertungen
     df2 = df.where(df["NameKlinik"]==kname)
@@ -70,7 +95,7 @@ def bewertungen_post():
     kb_sterne = df2['Gesamt']
     kb_sterne =[int(i) for i in kb_sterne]
     # KB poz_neg result
-    kb_result = df2['Zufriedenheit']
+    kb_result = df2['Polarity Stimmung']
     kb = zip(kb_bewertungen,kb_sterne,kb_result)
     data = sterneDict[kname]
 
@@ -83,13 +108,13 @@ def bewertungen_post():
     gm_sterne =[int(i) for i in gm_sterne]
     # GM poz_neg result
 
-    gm_result = df3['Zufriedenheit']
+    gm_result = df3['Polarity Stimmung']
     gm = zip(gm_bewertungen,gm_sterne,gm_result)
     gmdata = gmsterneDict[kname]
     
     # print(gmdata)
   
-    return render_template("bewertungen.html",kname=kname,display='block',display2='none',nameKlinik=nameKlinik,gmnameKlinik=gmnameKlinik,kb=kb,gm=gm,data=data,gmdata=gmdata)      
+    return render_template("bewertungen.html",kname=kname,display='block',display2='none',nameKlinik=nameKlinik,gmnameKlinik=gmnameKlinik,kb=kb,gm=gm,data=data,gmdata=gmdata,adresse=adresse)      
   
 
 if __name__ == "__main__":
