@@ -11,10 +11,10 @@ kb_means = kb_stars.groupby(['NameKlinik'], as_index=False)['Gesamt'].mean()
 kb_means = kb_means.sort_values('Gesamt',ascending=False, ignore_index=True)
 vergleich_list = kb_means['Gesamt'].to_list()
 nameKlinik = kb_means['NameKlinik'].to_list()
+
 # KB Sterne Dict
 df2 = df.groupby(['NameKlinik', 'Gesamt']).size().unstack().reset_index()
 sterneDict = df2.set_index('NameKlinik').T.to_dict('list')
-
 
 # Google Maps
 dfgm=pd.read_csv("GM_Clean.csv")
@@ -23,6 +23,7 @@ gm_means = gm_stars.groupby(['Name der Klinik'], as_index=False)['Sternebewertun
 gb_means = gm_means.sort_values('Sternebewertung',ascending=False, ignore_index=True)
 gm_vergleich_list = gm_means['Sternebewertung'].to_list()
 gmnameKlinik = gm_means['Name der Klinik'].to_list()
+
 # GM Sterne Dict
 df3 = dfgm.groupby(['Name der Klinik', 'Sternebewertung']).size().unstack().reset_index()
 df3 = df3.fillna(0)
@@ -111,9 +112,7 @@ def bewertungen_post():
     gm_result = df3['Polarity Stimmung']
     gm = zip(gm_bewertungen,gm_sterne,gm_result)
     gmdata = gmsterneDict[kname]
-    
-    # print(gmdata)
-  
+
     return render_template("bewertungen.html",kname=kname,display='block',display2='none',nameKlinik=nameKlinik,gmnameKlinik=gmnameKlinik,kb=kb,gm=gm,data=data,gmdata=gmdata,adresse=adresse)      
   
 
