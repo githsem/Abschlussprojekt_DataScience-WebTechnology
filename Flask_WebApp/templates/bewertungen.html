@@ -5,11 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ITea - Klinik Finder</title>
-  <style>
-    section {
-      padding: 60px 0;
-    }
-  </style>
+  <style> section {padding: 60px 0;}</style>
   <script src="https://kit.fontawesome.com/dfdd262768.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   
@@ -147,7 +143,6 @@
       </div>
   </section>
 
-
 <!-- Klinik Bewertungen Hospital Information -->
 <section id="all_info" class="bg-light py-3" style="display: {{display}};">
   <div class="container-lg text-center">
@@ -185,8 +180,6 @@
   </div>
 </section>
 
-
-
 <!-- reviews list -->
 <section id="reviews" style="display: {{display}};">
   <div class="container-lg">
@@ -196,7 +189,7 @@
     </div>
     <div class="container-lg justify-content-center my-5">
 
-            <!-- KB Datatable Begin-->
+        <!-- KB Datatable Begin-->
         <table id="table_id" class="display table">
           <thead>
             <tr>
@@ -233,7 +226,7 @@
 
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-          <!-- Google Maps Inhalt -->
+<!-- Google Maps Inhalt -->
 
 <!-- Google Maps Hospital Information -->
 <section id="all_info" class="bg-light py-3" style="display: {{display}};">
@@ -267,12 +260,9 @@
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 </section>
-
-
 
 <!-- reviews list -->
 <section id="reviews" style="display: {{display}};">
@@ -283,8 +273,7 @@
     </div>
 
     <div class="container-lg justify-content-center my-5">
-            <!-- GM Datatable Begin-->
-             
+        <!-- GM Datatable Begin-->      
         <table id="table_id2" class="display table">
           <thead>
             <tr>
@@ -293,8 +282,7 @@
               <th>Sentiment</th>
             </tr>
           </thead>
-          <tbody>
-            
+          <tbody>    
             <tr>
               {% for i,j,k in gm %}
               <td style="width: 80%;">{{i}}</td>
@@ -312,12 +300,10 @@
           </tbody>
         </table>
       <!-- GM Datatable End -->
-      
     </div>
   </div>
 </section>
       </div>
-      
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -331,43 +317,6 @@
   </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0-rc.1/chartjs-plugin-datalabels.min.js" integrity="sha512-+UYTD5L/bU1sgAfWA0ELK5RlQ811q8wZIocqI7+K0Lhh8yVdIoAMEs96wJAIbgFvzynPm36ZCXtkydxu1cs27w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-  // Dummy Doughnut
-  // var dDoughnut = document.getElementById("dummyDoughnut").getContext("2d");
-  // var myDoughnut = new Chart(dDoughnut, {
-  //   type: "doughnut",
-  //   data: {
-  //     labels: ["Unzufrieden", "Weniger Zufrieden",  "Zufrieden", "Sehr Zufrieden"],
-  //     datasets: [
-  //       {
-  //         data: [1,2,3,4],
-  //         backgroundColor: [
-  //           "#ffc107",
-  //           "#fd7e14",
-  //           "#dc3545",
-  //           "#198754",
-  //           "#4D5360"
-  //         ],
-  //         hoverBackgroundColor: [
-  //           "#FF5A5E",
-  //           "#5AD3D1",
-  //           "#FFC870",
-  //           "#A8B3C5",
-  //           "#616774",
-  //         ],
-  //       },
-  //     ],
-  //   },
-  //   options: {
-  //     responsive: true,
-  //     animation: {
-  //           duration: 2800,
-  //   },
-  // }
-  // });
-  //     <block:actions:2>
-       
-</script>
 <script>
 
 // Bewertungen Horizontal
@@ -641,5 +590,4 @@ let ctx2 = document.getElementById('myChart').getContext('2d');
   });
 </script>
 </body>
-
 </html>
