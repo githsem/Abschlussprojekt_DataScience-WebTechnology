@@ -8,7 +8,11 @@
   <script src="https://kit.fontawesome.com/dfdd262768.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link href="{{ url_for('static',filename='styles/main.min.css') }}" rel="stylesheet">
-  <style>section {padding: 60px 0;}</style>
+  <style>
+    section {
+      padding: 60px 0;
+    }
+  </style>
 </head>
 
 <body>
@@ -29,16 +33,19 @@
       <!-- navbar links -->
       <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
         <ul class="navbar-nav fw-bold">
-            <li class="nav-item">
-              <li class="nav-item">
-                <a class="nav-link" href="/"><i class="fs-5 bi-house-fill"></i><span class="ms-1 d-none d-sm-inline">Home</span></a>
-              </li>
-              <a class="nav-link" href="/bewertungen"><i class="bi bi-stars"></i></i><span class="ms-1 d-none d-sm-inline">Bewertungen</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/vorhersage"><i class="bi bi-gear-fill"></i></i><span class="ms-1 d-none d-sm-inline">Analyzer</span></a>
-            </li>
-          </ul>
+          <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" href="/"><i class="fs-5 bi-house-fill"></i><span
+                class="ms-1 d-none d-sm-inline">Home</span></a>
+          </li>
+          <a class="nav-link" href="/bewertungen"><i class="bi bi-stars"></i></i><span
+              class="ms-1 d-none d-sm-inline">Bewertungen</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/vorhersage"><i class="bi bi-gear-fill"></i></i><span
+                class="ms-1 d-none d-sm-inline">Analyzer</span></a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -52,16 +59,12 @@
       </div>
       <div class="row g-4 justify-content-center align-items-center">
         <div class="col-md-5">
-          <p class="lead text-primary">Gib deinen Text oder deine Bewertung ein, um zu sehen, ob es sich um ein Lob oder einen Tadel handelt.</p>
+          <p class="lead text-primary">Gib deinen Text oder deine Bewertung ein, um zu sehen, ob es sich um ein Lob oder
+            einen Tadel handelt.</p>
           <form method="POST">
             <div class="form-floating">
-              <textarea
-                name="text"
-                class="form-control"
-                placeholder="Leave a comment here"
-                id="floatingTextarea2"
-                style="height: 100px"
-              ></textarea>
+              <textarea name="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                style="height: 100px"></textarea>
               <label for="floatingTextarea2">Text</label><br>
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
@@ -79,82 +82,107 @@
           <div class="accordion" id="chapters">
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading-1">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-1" aria-expanded="true" aria-controls="chapter-1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-1"
+                  aria-expanded="true" aria-controls="chapter-1">
                   Teil 1 - Was ist Sentimentanalyse
                 </button>
               </h2>
-              <div id="chapter-1" class="accordion-collapse collapse show" aria-labelledby="heading-1" data-bs-parent="#chapters">
+              <div id="chapter-1" class="accordion-collapse collapse show" aria-labelledby="heading-1"
+                data-bs-parent="#chapters">
                 <div class="accordion-body">
-                  <p>Sentimentanalyse, auch Opinion Mining genannt, ist das herausfinden der Meinung, die in einem Text zu irgendetwas geäußert wird.</p>
+                  <p>Sentimentanalyse, auch Opinion Mining genannt, ist das herausfinden der Meinung, die in einem Text
+                    zu irgendetwas geäußert wird.</p>
                   <p>
-                    <ul>
-                      <li>Objektiv vs. Subjektiv</li>
-                      <li>Negativ - Neutral - Positiv.</li>
-                    </ul>
+                  <ul>
+                    <li>Objektiv vs. Subjektiv</li>
+                    <li>Negativ - Neutral - Positiv.</li>
+                  </ul>
                   </p>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading-2">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-2" aria-expanded="false" aria-controls="chapter-2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#chapter-2" aria-expanded="false" aria-controls="chapter-2">
                   Teil 2 - Unser Produkt: ITea
                 </button>
               </h2>
-              <div id="chapter-2" class="accordion-collapse collapse" aria-labelledby="heading-2" data-bs-parent="#chapters">
+              <div id="chapter-2" class="accordion-collapse collapse" aria-labelledby="heading-2"
+                data-bs-parent="#chapters">
                 <div class="accordion-body">
-                  <p>1. Wir trainieren einen Klassifikator, der aus Beispieltexten lernt, ob es sich um eine positive oder negative Stimmung handelt. Wir können Texte in verschiedenen Themenbereichen hinzufügen, damit unsere Methode besser lernen kann. </p>
+                  <p>1. Wir trainieren einen Klassifikator, der aus Beispieltexten lernt, ob es sich um eine positive
+                    oder negative Stimmung handelt. Wir können Texte in verschiedenen Themenbereichen hinzufügen, damit
+                    unsere Methode besser lernen kann. </p>
                   <p>2. Wir nutzen allgemeine Listen mit positiven und negativen Bewertungen.</p>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading-3">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-3" aria-expanded="false" aria-controls="chapter-1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#chapter-3" aria-expanded="false" aria-controls="chapter-1">
                   Teil 3 - Tools
                 </button>
               </h2>
-              <div id="chapter-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#chapters">
+              <div id="chapter-3" class="accordion-collapse collapse" aria-labelledby="heading-3"
+                data-bs-parent="#chapters">
                 <div class="accordion-body">
-                  <p>NLTK: Eine Sammlung mit sehr vielen Algorithmen, meistens sprachunabhängig oder für viele Sprachen geeignet. Oft auch viele unterschiedliche Algorithmen für dieselbe Aufgabe. Ein Eldorado für Experte, die experimentieren und selber neue Anwendungen entwickeln wollen.</p>
-                  <p>TextBlob: eine Auswahl von Algorithmen aus NLTK, die zusammen eine Standard-Analyse eines Textes für einige wenige Sprachen ausführen können. Wenig Vorwissn erforderlich, einfach einzusetzen, aber ohne Möglichkeiten, etwas anzupassen.</p>
+                  <p>NLTK: Eine Sammlung mit sehr vielen Algorithmen, meistens sprachunabhängig oder für viele Sprachen
+                    geeignet. Oft auch viele unterschiedliche Algorithmen für dieselbe Aufgabe. Ein Eldorado für
+                    Experte, die experimentieren und selber neue Anwendungen entwickeln wollen.</p>
+                  <p>TextBlob: eine Auswahl von Algorithmen aus NLTK, die zusammen eine Standard-Analyse eines Textes
+                    für einige wenige Sprachen ausführen können. Wenig Vorwissn erforderlich, einfach einzusetzen, aber
+                    ohne Möglichkeiten, etwas anzupassen.</p>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading-4">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-4" aria-expanded="false" aria-controls="chapter-4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#chapter-4" aria-expanded="false" aria-controls="chapter-4">
                   Teil 4 - Was ist "Maschine Learning"
                 </button>
               </h2>
-              <div id="chapter-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#chapters">
+              <div id="chapter-4" class="accordion-collapse collapse" aria-labelledby="heading-4"
+                data-bs-parent="#chapters">
                 <div class="accordion-body">
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda delectus sapiente quidem consequatur odit adipisci necessitatibus nemo aliquid minus modi tempore quibusdam quas vitae, animi ipsam nulla sunt alias.</p>
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda delectus sapiente quidem consequatur odit adipisci necessitatibus nemo aliquid minus modi tempore quibusdam quas vitae, animi ipsam nulla sunt alias.</p>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda delectus sapiente quidem
+                    consequatur odit adipisci necessitatibus nemo aliquid minus modi tempore quibusdam quas vitae, animi
+                    ipsam nulla sunt alias.</p>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda delectus sapiente quidem
+                    consequatur odit adipisci necessitatibus nemo aliquid minus modi tempore quibusdam quas vitae, animi
+                    ipsam nulla sunt alias.</p>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading-5">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-5" aria-expanded="false" aria-controls="chapter-5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#chapter-5" aria-expanded="false" aria-controls="chapter-5">
                   Teil 5 - Natural Language Processing (NLP)
                 </button>
               </h2>
-              <div id="chapter-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#chapters">
+              <div id="chapter-5" class="accordion-collapse collapse" aria-labelledby="heading-5"
+                data-bs-parent="#chapters">
                 <div class="accordion-body">
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda delectus sapiente quidem consequatur odit adipisci necessitatibus nemo aliquid minus modi tempore quibusdam quas vitae, animi ipsam nulla sunt alias.</p>
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda delectus sapiente quidem consequatur odit adipisci necessitatibus nemo aliquid minus modi tempore quibusdam quas vitae, animi ipsam nulla sunt alias.</p>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda delectus sapiente quidem
+                    consequatur odit adipisci necessitatibus nemo aliquid minus modi tempore quibusdam quas vitae, animi
+                    ipsam nulla sunt alias.</p>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda delectus sapiente quidem
+                    consequatur odit adipisci necessitatibus nemo aliquid minus modi tempore quibusdam quas vitae, animi
+                    ipsam nulla sunt alias.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -164,5 +192,6 @@
       new bootstrap.Tooltip(t)
     })
   </script>
-  </body>
+</body>
+
 </html>
